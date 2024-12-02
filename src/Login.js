@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 export default function LoginScreen() {
   const [username, setUsername] = useState('');
@@ -40,6 +40,12 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.container}>
+      {/* Add Image */}
+      <Image
+        source={require('../assets/doctor.jpg')} // Local image path in the "assets" folder
+        style={styles.logo}
+        resizeMode="contain"
+      />
       <Text style={styles.title}>Meet Your Doctor</Text>
       <TextInput
         style={styles.input}
@@ -77,8 +83,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ffffff',
   },
+  logo: {
+    width: 400,
+    height: 500,
+    marginBottom: 10,
+    margingTop: 10,
+    
+  
+  },
   title: {
-    fontSize: 24,
+    fontSize: 40,
     fontWeight: 'bold',
     marginBottom: 30,
     color: '#007BFF',

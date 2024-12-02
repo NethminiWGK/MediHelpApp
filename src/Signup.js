@@ -1,99 +1,84 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons'; // Import icon library
 
-export default function SignupScreen() {
+export default function SignUpScreen() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const validateFields = () => {
-    const newErrors = {};
-    if (!username) newErrors.username = 'This field is required';
-    if (!email) {
-      newErrors.email = 'This field is required';
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = 'Invalid email address';
+  const handleSignUp = () => {
+    if (!username || !email || !phoneNumber || !password || !confirmPassword) {
+      alert('Please fill in all fields');
+      return;
     }
-    if (!phone) {
-      newErrors.phone = 'This field is required';
-    } else if (!/^\d+$/.test(phone)) {
-      newErrors.phone = 'Phone number must be numeric';
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
     }
-    if (!password) {
-      newErrors.password = 'This field is required';
-    } else if (password.length > 8) {
-      newErrors.password = 'Password must be a maximum of 8 characters';
-    }
-    if (!confirmPassword) {
-      newErrors.confirmPassword = 'This field is required';
-    } else if (confirmPassword !== password) {
-      newErrors.confirmPassword = 'Passwords do not match';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSignup = () => {
-    if (validateFields()) {
-      alert('Signup Successful!');
-    }
+    alert('Signed up successfully');
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Create an Account</Text>
-
+      <Text style={styles.title}>Sign Up</Text>
       <TextInput
         style={styles.input}
         placeholder="User Name"
         value={username}
         onChangeText={setUsername}
       />
-      {errors.username && <Text style={styles.errorText}>{errors.username}</Text>}
-
       <TextInput
         style={styles.input}
         placeholder="Email"
+        keyboardType="email-address"
         value={email}
         onChangeText={setEmail}
-        keyboardType="email-address"
       />
-      {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
-
       <TextInput
         style={styles.input}
         placeholder="Phone Number"
-        value={phone}
-        onChangeText={setPhone}
         keyboardType="phone-pad"
+        value={phoneNumber}
+        onChangeText={setPhoneNumber}
       />
-      {errors.phone && <Text style={styles.errorText}>{errors.phone}</Text>}
-
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-      />
-      {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
-
-      <TextInput
-        style={styles.input}
-        placeholder="Confirm Password"
-        secureTextEntry
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-      />
-      {errors.confirmPassword && (
-        <Text style={styles.errorText}>{errors.confirmPassword}</Text>
-      )}
-
-      <TouchableOpacity style={styles.button} onPress={handleSignup}>
+      <View style={styles.passwordContainer}>
+        <TextInput
+          style={styles.passwordInput}
+          placeholder="Password"
+          secureTextEntry={!showPassword}
+          value={password}
+          onChangeText={setPassword}
+        />
+        <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+          <Icon
+            name={showPassword ? 'visibility' : 'visibility-off'}
+            size={20}
+            color="gray"
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.passwordContainer}>
+        <TextInput
+          style={styles.passwordInput}
+          placeholder="Confirm Password"
+          secureTextEntry={!showConfirmPassword}
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+        />
+        <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
+          <Icon
+            name={showConfirmPassword ? 'visibility' : 'visibility-off'}
+            size={20}
+            color="gray"
+          />
+        </TouchableOpacity>
+      </View>
+      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
     </View>
@@ -121,23 +106,27 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 5,
   },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '80%',
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    marginVertical: 10,
+  },
+  passwordInput: {
+    flex: 1,
+    padding: 10,
+  },
   button: {
     backgroundColor: '#007BFF',
     padding: 15,
     borderRadius: 5,
     marginTop: 20,
-    width: '80%',
-    alignItems: 'center',
   },
   buttonText: {
     color: '#fff',
     fontWeight: 'bold',
-  },
-  errorText: {
-    color: 'red',
-    fontSize: 12,
-    alignSelf: 'flex-start',
-    marginLeft: '10%',
-    marginBottom: 5,
   },
 });
