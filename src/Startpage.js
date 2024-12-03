@@ -14,7 +14,7 @@ export default function WelcomeScreen({ navigation }) {
       {/* Doctor Image */}
       <View style={styles.imageContainer}>
         <Image
-          source={require('../assets/doctor.png')} // Replace with your doctor image path
+          source={require('../assets/doctor1.png')} // Replace with your doctor image path
           style={styles.doctorImage}
         />
       </View>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'orange',
   },
   title: {
     fontSize: 50,
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    backgroundColor: '#FF7F50', // Coral orange color for the button
+    backgroundColor: '#007BFF', // Coral orange color for the button
     padding: 15,
-    width: '90%',
+    width: '80%',
     alignItems: 'center',
     borderRadius: 5,
     marginBottom: 40,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     marginBottom: 50, // Adjust as needed
   },
   doctorImage: {
-    width: 400, // Adjust size based on your image
+    width: 500, // Adjust size based on your image
     height: 500,
     resizeMode: 'contain',
   },

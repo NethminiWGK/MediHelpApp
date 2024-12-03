@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Start from './src/Startpage'; // Adjust the path based on your project structure
 import Login from './src/Login'; // Adjust the path based on your project structure
 import SignUp from './src/Signup'; // Import the SignUp component
+import Home from './src/Home'; // Import the Home component
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,11 @@ export default function App() {
           name="SignUp"
           component={SignUp}
           options={{ title: 'Sign Up' }} // Header title for SignUp Screen
+        />
+         <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ title: 'Home', headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

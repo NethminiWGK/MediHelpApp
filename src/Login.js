@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
 
   const validateFields = () => {
     let valid = true;
@@ -33,14 +32,13 @@ export default function LoginScreen({ navigation }) {
 
   const handleLogin = () => {
     if (validateFields()) {
-      setSuccessMessageVisible(true); // Show success pop-up
-      setTimeout(() => setSuccessMessageVisible(false), 3000); // Hide it after 3 seconds
+      // Navigate to Home page on successful validation
+      navigation.navigate('Home');
     }
   };
 
   return (
     <View style={styles.container}>
-    
       <Text style={styles.title}>Meet Your Doctor</Text>
       <TextInput
         style={styles.input}
@@ -57,7 +55,7 @@ export default function LoginScreen({ navigation }) {
         onChangeText={setPassword}
       />
       {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
-      
+
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Log In</Text>
       </TouchableOpacity>
@@ -72,13 +70,6 @@ export default function LoginScreen({ navigation }) {
           Sign Up
         </Text>
       </Text>
-
-      {/* Success Pop-up */}
-      {successMessageVisible && (
-        <View style={styles.successPopup}>
-          <Text style={styles.successText}>Login Successful!</Text>
-        </View>
-      )}
     </View>
   );
 }
@@ -89,11 +80,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#ffffff',
-  },
-  logo: {
-    width: 400,
-    height: 500,
-    marginBottom: 10,
   },
   title: {
     fontSize: 40,
@@ -120,7 +106,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     textAlign: 'center',
-   
   },
   signupText: {
     marginTop: 20,
@@ -137,20 +122,5 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     marginLeft: '10%',
     marginBottom: 5,
-  },
-  successPopup: {
-    position: 'absolute',
-    bottom: 30,
-    width: '90%',
-    padding: 15,
-    backgroundColor: 'green',
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  successText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 16,
   },
 });
