@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.topSection}>
@@ -14,16 +14,15 @@ export default function WelcomeScreen() {
       {/* Doctor Image */}
       <View style={styles.imageContainer}>
         <Image
-          source={require('../assets/doctor.jpg')} // Replace with your doctor image path
+          source={require('../assets/doctor.png')} // Replace with your doctor image path
           style={styles.doctorImage}
         />
       </View>
 
+      {/* Navigate to Login */}
       <TouchableOpacity
         style={styles.button}
-        onPress={() => {
-          alert('Start button pressed!');
-        }}
+        onPress={() => navigation.navigate('Login')}
       >
         <Text style={styles.buttonText}>Start</Text>
       </TouchableOpacity>
@@ -36,10 +35,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-   
-    
+    backgroundColor: 'white',
   },
- 
   title: {
     fontSize: 50,
     fontWeight: 'bold',
@@ -47,7 +44,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 100,
     marginBottom: 20,
-    
   },
   paragraph: {
     fontSize: 16,

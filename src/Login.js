@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
@@ -40,12 +40,7 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Add Image */}
-      <Image
-        source={require('../assets/doctor.jpg')} // Local image path in the "assets" folder
-        style={styles.logo}
-        resizeMode="contain"
-      />
+    
       <Text style={styles.title}>Meet Your Doctor</Text>
       <TextInput
         style={styles.input}
@@ -62,9 +57,21 @@ export default function LoginScreen() {
         onChangeText={setPassword}
       />
       {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
+      
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Log In</Text>
       </TouchableOpacity>
+
+      {/* "Don't have an account? Sign Up" */}
+      <Text style={styles.signupText}>
+        Don't you have an account?{' '}
+        <Text
+          style={styles.signupLink}
+          onPress={() => navigation.navigate('SignUp')}
+        >
+          Sign Up
+        </Text>
+      </Text>
 
       {/* Success Pop-up */}
       {successMessageVisible && (
@@ -87,9 +94,6 @@ const styles = StyleSheet.create({
     width: 400,
     height: 500,
     marginBottom: 10,
-    margingTop: 10,
-    
-  
   },
   title: {
     fontSize: 40,
@@ -110,9 +114,21 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 5,
     marginTop: 20,
+    width: '30%',
   },
   buttonText: {
     color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
+   
+  },
+  signupText: {
+    marginTop: 20,
+    fontSize: 14,
+    color: '#666',
+  },
+  signupLink: {
+    color: '#007BFF',
     fontWeight: 'bold',
   },
   errorText: {
