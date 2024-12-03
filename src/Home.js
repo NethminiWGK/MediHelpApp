@@ -1,5 +1,13 @@
 import React from 'react';
-import { View,Text,TextInput,TouchableOpacity,StyleSheet,Image,ScrollView,} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  ScrollView,
+} from 'react-native';
 
 export default function Dashboard() {
   return (
@@ -8,43 +16,51 @@ export default function Dashboard() {
       <View style={styles.header}>
         <Text style={styles.greeting}>Hi, Smith</Text>
         <Text style={styles.welcome}>Welcome Back</Text>
-      </View>
+      
 
-      {/* Search Bar */}
-      <View style={styles.searchContainer}>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search..."
-          placeholderTextColor="#ccc"
-        />
-      </View>
-
-      {/* Categories */}
-      <Text style={styles.categoryTitle}>Category</Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <View style={styles.categoryContainer}>
-          <TouchableOpacity style={styles.categoryItem}>
-            <Text style={styles.categoryText}>Dental</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.categoryItem}>
-            <Text style={styles.categoryText}>Heart</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.categoryItem}>
-            <Text style={styles.categoryText}>Eyes</Text>
-          </TouchableOpacity>
+      {/* Main Content with White Background */}
+     
+        {/* Search Bar */}
+        <View style={styles.searchContainer}>
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search..."
+            placeholderTextColor="#ccc"
+          />
         </View>
-      </ScrollView>
+        </View>
 
-      {/* Top Rated Doctors */}
-      <Text style={styles.topRatedTitle}>Top Rated</Text>
-      <View style={styles.doctorCard}>
-        <Image
-          source={require('../assets/doctor.jpg')} // Replace with your doctor image path
-          style={styles.doctorImage}
-        />
-        <View style={styles.doctorInfo}>
-          <Text style={styles.doctorName}>Dr. John Smith</Text>
-          <Text style={styles.doctorSpecialty}>Urology</Text>
+        {/* Categories */}
+        <View style={styles.mainContent}>
+        <Text style={styles.categoryTitle}>Category</Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <View style={styles.categoryContainer}>
+            <TouchableOpacity style={styles.categoryItem}>
+              <Text style={styles.categoryText}>Dental</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.categoryItem}>
+              <Text style={styles.categoryText}>Heart</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.categoryItem}>
+              <Text style={styles.categoryText}>Eyes</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.categoryItem}>
+              <Text style={styles.categoryText}>Ears</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+
+        {/* Top Rated Doctors */}
+        <Text style={styles.topRatedTitle}>Top Rated</Text>
+        <View style={styles.doctorCard}>
+          <Image
+            source={require('../assets/doctor.png')} // Replace with your doctor image path
+            style={styles.doctorImage}
+          />
+          <View style={styles.doctorInfo}>
+            <Text style={styles.doctorName}>Dr. John Smith</Text>
+            <Text style={styles.doctorSpecialty}>Urology</Text>
+          </View>
         </View>
       </View>
     </View>
@@ -54,35 +70,52 @@ export default function Dashboard() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1E90FF', // Blue background
-    padding: 20,
+    backgroundColor: '#1E90FF', // Blue background for the header
   },
   header: {
     marginTop: 40,
-    marginBottom: 20,
+    marginBottom: 40,
+    paddingHorizontal: 20,
   },
   greeting: {
-    fontSize: 22,
+    fontSize: 25,
     color: '#FFFFFF',
     fontWeight: '600',
+    paddingTop:10,
   },
   welcome: {
-    fontSize: 28,
+    fontSize: 30,
     color: '#FFFFFF',
     fontWeight: 'bold',
+    paddingBottom: 20,
+    paddingTop: 20,
+
+  },
+  mainContent: {
+    flex: 1,
+    backgroundColor: '#FFFFFF', // White background for the rest of the page
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
   searchContainer: {
-    marginVertical: 20,
+    marginBottom: 10,
   },
   searchInput: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#F5F5F5',
     borderRadius: 10,
     padding: 10,
     fontSize: 16,
+    elevation: 2, // Adds shadow for Android
+    shadowColor: '#000', // Adds shadow for iOS
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 5,
   },
   categoryTitle: {
     fontSize: 20,
-    color: '#FFFFFF',
+    color: '#1E90FF',
     fontWeight: '600',
     marginVertical: 10,
   },
@@ -91,7 +124,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   categoryItem: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E90FF',
     borderRadius: 10,
     padding: 15,
     alignItems: 'center',
@@ -99,25 +132,35 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     width: 100,
     height: 100,
+    elevation: 2, // Adds shadow for Android
+    shadowColor: '#000', // Adds shadow for iOS
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 5,
   },
   categoryText: {
-    color: '#1E90FF',
+    color: '#FFFFFF',
     fontSize: 14,
     fontWeight: 'bold',
   },
   topRatedTitle: {
     fontSize: 20,
-    color: '#FFFFFF',
+    color: '#1E90FF',
     fontWeight: '600',
     marginBottom: 10,
   },
   doctorCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#F5F5F5',
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
     padding: 15,
     marginVertical: 10,
+    elevation: 2, // Adds shadow for Android
+    shadowColor: '#000', // Adds shadow for iOS
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 5,
   },
   doctorImage: {
     width: 60,
