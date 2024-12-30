@@ -32,7 +32,7 @@ export default function LoginScreen({ navigation }) {
 
   const handleLogin = () => {
     if (validateFields()) {
-      // Navigate to Home page on successful validation
+     
       navigation.navigate('Home' , {username});
     }
   };
@@ -41,7 +41,7 @@ export default function LoginScreen({ navigation }) {
     <View style={styles.container}>
        {/* Add doctor image */}
        <Image
-        source={require('../assets/doctor4.png')} // Replace with the actual path to your doctor image
+        source={require('../assets/doctor4.png')} 
         style={styles.image}
       />
       <Text style={styles.title}>Meet Your Doctor</Text>
@@ -114,10 +114,10 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '90%', 
-    height: undefined, // Remove fixed height
+    height: undefined, 
     aspectRatio: 1, 
     marginBottom: 20,
-    resizeMode: 'contain', // Adjust the image to fit within the container while maintaining the aspect ratio
+    resizeMode: 'contain', 
   },
   
   signupText: {

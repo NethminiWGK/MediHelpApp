@@ -7,19 +7,19 @@ export default function WelcomeScreen({ navigation }) {
       <View style={styles.topSection}>
         <Text style={styles.title}>Welcome to MediHelp App</Text>
         <Text style={styles.paragraph}>
-        Stay healthy, stay informed.check doctor availability at your fingertips.
+        Stay healthy, stay informed , check doctor availability at your fingertips.
         </Text>
       </View>
 
       {/* Doctor Image */}
       <View style={styles.imageContainer}>
         <Image
-          source={require('../assets/doctor1.png')} // Replace with your doctor image path
+          source={require('../assets/doctor1.png')} 
           style={styles.doctorImage}
         />
       </View>
 
-      {/* Navigate to Login */}
+     
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('Login')}
@@ -41,19 +41,19 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 50,
     fontWeight: 'bold',
-    color: '#2C3E50', // Dark blue color for the title
+    color: '#2C3E50', 
     textAlign: 'center',
     marginTop: 100,
     marginBottom: 20,
   },
   paragraph: {
     fontSize: 16,
-    color: '#2C3E50', // Dark blue color for the paragraph text
+    color: '#2C3E50', 
     textAlign: 'center',
     marginBottom: 10,
   },
   button: {
-    backgroundColor: '#007BFF', // Coral orange color for the button
+    backgroundColor: '#007BFF', 
     padding: 15,
     width: '80%',
     alignItems: 'center',
@@ -62,18 +62,18 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   buttonText: {
-    color: '#FFFFFF', // White text color
+    color: '#FFFFFF', 
     fontWeight: 'bold',
     fontSize: 16,
   },
   imageContainer: {
     flex: 1,
-    justifyContent: 'flex-end', // Places the image towards the bottom
+    justifyContent: 'flex-end', 
     alignItems: 'center',
-    marginBottom: 50, // Adjust as needed
+    marginBottom: 50,
   },
   doctorImage: {
-    width: 500, // Adjust size based on your image
+    width: 500, 
     height: 500,
     resizeMode: 'contain',
   },

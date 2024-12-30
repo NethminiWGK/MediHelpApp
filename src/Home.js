@@ -25,13 +25,13 @@ export function ClickProvider({ children }) {
 
 export default function Home() {
   const route = useRoute();
-  const { username } = route.params || {}; // Extract the username
+  const { username } = route.params || {}; 
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredDoctors, setFilteredDoctors] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const { clickCount, setClickCount } = useContext(ClickContext);
-  const [clickedCards, setClickedCards] = useState({}); // Track clicked cards by ID
+  const [clickedCards, setClickedCards] = useState({}); 
 
   useEffect(() => {
     // Fetch data from the API
@@ -67,7 +67,7 @@ export default function Home() {
     setClickedCards((prev) => {
       if (prev[id]) {
         // If card is already clicked, toggle it off and decrement the count
-        setClickCount((prevCount) => Math.max(0, prevCount - 1)); // Ensure count doesn't go below 0
+        setClickCount((prevCount) => Math.max(0, prevCount - 1)); 
         return { ...prev, [id]: false };
       } else {
         // If card is not clicked, toggle it on and increment the count
@@ -86,7 +86,7 @@ export default function Home() {
         <Text style={styles.welcome}>Welcome Back To Medi Help</Text>
       </View>
 
-      {/* Main Content with White Background */}
+     
       <View style={styles.mainContent}>
         {/* Search Bar */}
         <View style={styles.searchBar}>
@@ -124,7 +124,7 @@ export default function Home() {
               />
               <View style={styles.doctorInfo}>
                 <Text style={styles.doctorName}>{doctor.name}</Text>
-                <Text style={styles.doctorSpecialty}>{doctor.company.catchPhrase}</Text>
+                <Text style={styles.doctorCity}>City: {doctor.address.city}</Text>
                 <Text style={styles.statusTag}>Available</Text>
               </View>
             </TouchableOpacity>
@@ -143,7 +143,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1E90FF', // Blue background for the header
+    backgroundColor: '#1E90FF', 
   },
   header: {
     marginTop: 40,
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   },
   mainContent: {
     flex: 1,
-    backgroundColor: '#FFFFFF', // White background for the rest of the page
+    backgroundColor: '#FFFFFF', 
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingHorizontal: 20,
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
   },
   clickedCard: {
-    backgroundColor: '#ADD8E6', // Light blue for clicked card
+    backgroundColor: '#ADD8E6', 
   },
   doctorImage: {
     width: 60,

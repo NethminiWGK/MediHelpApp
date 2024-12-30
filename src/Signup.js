@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons'; // Import icon library
+import Icon from 'react-native-vector-icons/MaterialIcons'; 
 
 export default function SignUpScreen() {
   const [username, setUsername] = useState('');
@@ -66,8 +66,8 @@ export default function SignUpScreen() {
 
   const handleSignUp = () => {
     if (validateFields()) {
-      setSuccessMessageVisible(true); // Show success pop-up
-      setTimeout(() => setSuccessMessageVisible(false), 3000); // Hide it after 3 seconds
+      setSuccessMessageVisible(true);
+      setTimeout(() => setSuccessMessageVisible(false), 3000); 
     }
   };
   return (
