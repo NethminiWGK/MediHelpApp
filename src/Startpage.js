@@ -7,7 +7,7 @@ export default function WelcomeScreen({ navigation }) {
       <View style={styles.topSection}>
         <Text style={styles.title}>Welcome to MediHelp App</Text>
         <Text style={styles.paragraph}>
-          This application has a feature to consult a doctor or become a doctor.
+        Stay healthy, stay informed.check doctor availability at your fingertips.
         </Text>
       </View>
 
@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'orange',
+    backgroundColor: '#DFF6DD',
+   
   },
   title: {
     fontSize: 50,

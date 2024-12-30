@@ -5,11 +5,12 @@ import Start from './src/Startpage'; // Adjust the path based on your project st
 import Login from './src/Login'; // Adjust the path based on your project structure
 import SignUp from './src/Signup'; // Import the SignUp component
 import Home from './src/Home'; // Import the Home component
-
+import { ClickProvider } from './src/Home';
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
+    <ClickProvider>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen
@@ -20,12 +21,12 @@ export default function App() {
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{ title: 'Login' }} // Header title for Login Screen
+          options={{ title: 'Login' ,headerShown: false }} // Header title for Login Screen
         />
         <Stack.Screen
           name="SignUp"
           component={SignUp}
-          options={{ title: 'Sign Up' }} // Header title for SignUp Screen
+          options={{ title: 'Sign Up',headerShown: false  }} // Header title for SignUp Screen
         />
          <Stack.Screen
           name="Home"
@@ -34,5 +35,6 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    </ClickProvider>
   );
 }

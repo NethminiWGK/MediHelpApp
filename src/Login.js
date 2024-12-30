@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
@@ -33,12 +33,17 @@ export default function LoginScreen({ navigation }) {
   const handleLogin = () => {
     if (validateFields()) {
       // Navigate to Home page on successful validation
-      navigation.navigate('Home');
+      navigation.navigate('Home' , {username});
     }
   };
 
   return (
     <View style={styles.container}>
+       {/* Add doctor image */}
+       <Image
+        source={require('../assets/doctor4.png')} // Replace with the actual path to your doctor image
+        style={styles.image}
+      />
       <Text style={styles.title}>Meet Your Doctor</Text>
       <TextInput
         style={styles.input}
@@ -107,6 +112,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  image: {
+    width: '90%', 
+    height: undefined, // Remove fixed height
+    aspectRatio: 1, 
+    marginBottom: 20,
+    resizeMode: 'contain', // Adjust the image to fit within the container while maintaining the aspect ratio
+  },
+  
   signupText: {
     marginTop: 20,
     fontSize: 14,
